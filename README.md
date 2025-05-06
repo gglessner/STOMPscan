@@ -31,9 +31,10 @@ modules/
 
 1. **Clone / copy** the two files above into the `modules/` directory of your **Ningu** project.  
 2. Verify Python 3.8+ and **PySide6** (≥ 6.4) are installed:
-   ```bash
-   pip install PySide6
 ```
+   bash
+   pip install PySide6
+````
 
 3. Launch your main Ningu GUI (e.g. `python ningu-v1.0.0.py` or `python HACKtiveMQ-v1.0.0.py`).
    Ningu/HACKtiveMQ auto‑discovers the module and adds a **“STOMPscan v1.3.2”** tab.
