@@ -44,11 +44,11 @@ modules/
 
 | Step  | Action                                                                                                                                 |
 | ----- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| **1** | Paste or load a list of hosts/IPs into **Hosts** box.<br/>🛈  Use **Load**, **Save**, **Clear**, or **Sort+Dedup** to manage the list. |
-| **2** | Pick the **port** (default **61613**) and toggle **TCP / SSL**.                                                                        |
-| **3** | Click **Scan** or press **Enter** in the port box.                                                                                     |
-| **4** | Watch the **Status** pane for live logging; results populate in the table.                                                             |
-| **5** | Save results with **Output → Save** (CSV).                                                                                             |
+|   1   | Paste or load a list of hosts/IPs into **Hosts** box. Use **Load**, **Save**, **Clear**, or **Sort+Dedup** to manage the list.         |
+|   2   | Pick the **port** (default **61613**) and toggle **TCP / SSL**.                                                                        |
+|   3   | Click **Scan** or press **Enter** in the port box.                                                                                     |
+|   4   | Watch the **Status** pane for live logging; results populate in the table.                                                             |
+|   5   | Save results with **Output → Save** (CSV).                                                                                             |
 
 **Column meanings**
 
