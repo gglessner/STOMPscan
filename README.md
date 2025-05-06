@@ -1,6 +1,6 @@
 # STOMPscan (Ningu Module) 
 
-> **STOMPscan v1.3.2** – A graphical reconnaissance tool that fingerprints **ActiveMQ / Artemis / other STOMP‑speaking brokers** from within the modular **Ningu (忍具)** framework.  
+> **STOMPscan v1.3.2** – A graphical reconnaissance tool that fingerprints ActiveMQ / Artemis / other STOMP‑speaking brokers from within the modular **Ningu (忍具)** framework.  
 > **Part of the [HACKtiveMQ] tool suite** for broker reconnaissance and penetration testing.
 
 ---
@@ -19,7 +19,7 @@
 ```
 
 modules/
-├─ stomp\_scan.py          # ← this file (rename as you wish)
+├─ 1_STOMPscan.py          # ← this file (rename as you wish)
 ├─ stomp-defaults.txt     # username\:password pairs, one per line
 └─ …                      # any other Ningu modules
 
@@ -35,8 +35,8 @@ modules/
    pip install PySide6
 ````
 
-3. Launch your main Ningu GUI (e.g. `python ningu.py`).
-   Ningu auto‑discovers the module and adds a **“STOMPscan v1.3.2”** tab.
+3. Launch your main Ningu GUI (e.g. `python ningu-v1.0.0.py` or `python HACKtiveMQ-v1.0.0.py`).
+   Ningu/HACKtiveMQ auto‑discovers the module and adds a **“STOMPscan v1.3.2”** tab.
 
 ---
 
