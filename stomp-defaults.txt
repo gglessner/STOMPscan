@@ -1,0 +1,8 @@
+admin:admin
+admin:activemq
+admin:admin123
+guest:guest
+guest:password
+system:manager
+publisher:pub123
+consumer:con123
