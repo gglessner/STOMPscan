@@ -56,7 +56,7 @@ modules/
 | ------------- | ------------------------------------------------------------- | ------ |
 | Timestamp     | Local scan time (YYYY‑MM‑DD HH\:MM\:SS)                       |        |
 | Hostname      | Target host                                                   |        |
-| Port          | \`<port>/\<tcp                                                | ssl>\` |
+| Port          | `<port>/\<tcp or ssl>\`                                       |        |
 | Defaults      | `username:password` pairs that succeeded, `None`, or `error`  |        |
 | Auth Status   | `disabled` / `enabled` / `unknown`                            |        |
 | Server String | Broker banner (if provided)                                   |        |
