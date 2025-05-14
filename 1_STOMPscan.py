@@ -28,7 +28,7 @@ import os
 import websocket
 
 # Define the version number at the top
-VERSION = "1.3.4"
+VERSION = "1.3.5"
 
 # Define the tab label for the tab widget
 TAB_LABEL = f"STOMPscan v{VERSION}"
@@ -481,32 +481,36 @@ class TabContent(QWidget):
 
         for host in hosts:
             self.ui.StatusTextBox.appendPlainText(f"\nScanning {host}:{port_display}...")
+            timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             try:
-                timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                 defaults, auth_status, server_string, info = self.scan_host(host, port, protocol)
-
-                row_count = self.ui.OutputTable.rowCount()
-                self.ui.OutputTable.insertRow(row_count)
-                row_data = [timestamp, host, port_display, defaults, auth_status, server_string, info]
-                for col, data in enumerate(row_data):
-                    item = QTableWidgetItem(str(data))
-                    item.setFlags(item.flags() & ~Qt.ItemIsEditable)
-                    if col in [0, 1, 2, 3, 4]:
-                        item.setTextAlignment(Qt.AlignCenter)
-                    if col == 0:
-                        try:
-                            dt = datetime.datetime.strptime(data, "%Y-%m-%d %H:%M:%S")
-                            item.setData(Qt.UserRole, dt)
-                        except ValueError:
-                            pass
-                    self.ui.OutputTable.setItem(row_count, col, item)
-
-                self.ui.StatusTextBox.appendPlainText(f"Completed scan for {host}")
-                self.ui.OutputTable.scrollToBottom()
-                QApplication.processEvents() # Force UI update
-
             except Exception as e:
                 self.ui.StatusTextBox.appendPlainText(f"Error scanning {host}: {e}")
+                defaults = "N/A"
+                auth_status = "unknown"
+                server_string = "unknown"
+                info = "port not open" if "connect" in str(e).lower() else "error"
+
+            # Log the result even if an error occurred
+            row_count = self.ui.OutputTable.rowCount()
+            self.ui.OutputTable.insertRow(row_count)
+            row_data = [timestamp, host, port_display, defaults, auth_status, server_string, info]
+            for col, data in enumerate(row_data):
+                item = QTableWidgetItem(str(data))
+                item.setFlags(item.flags() & ~Qt.ItemIsEditable)
+                if col in [0, 1, 2, 3, 4]:
+                    item.setTextAlignment(Qt.AlignCenter)
+                if col == 0:
+                    try:
+                        dt = datetime.datetime.strptime(data, "%Y-%m-%d %H:%M:%S")
+                        item.setData(Qt.UserRole, dt)
+                    except ValueError:
+                        pass
+                self.ui.OutputTable.setItem(row_count, col, item)
+
+            self.ui.StatusTextBox.appendPlainText(f"Completed scan for {host}")
+            self.ui.OutputTable.scrollToBottom()
+            QApplication.processEvents()  # Force UI update
 
         self.ui.StatusTextBox.appendPlainText("\nScan completed.")
 
