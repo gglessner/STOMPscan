@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-from PySide6.QtWidgets import QWidget, QPlainTextEdit, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit, QPushButton, QFrame, QGridLayout, QFileDialog, QSpacerItem, QSizePolicy, QTableWidget, QTableWidgetItem, QHeaderView, QCheckBox
+from PySide6.QtWidgets import QApplication, QWidget, QPlainTextEdit, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit, QPushButton, QFrame, QGridLayout, QFileDialog, QSpacerItem, QSizePolicy, QTableWidget, QTableWidgetItem, QHeaderView, QCheckBox
 from PySide6.QtGui import QFont, QFontMetrics
 from PySide6.QtCore import Qt
 import socket
@@ -28,7 +28,7 @@ import os
 import websocket
 
 # Define the version number at the top
-VERSION = "1.3.3"
+VERSION = "1.3.4"
 
 # Define the tab label for the tab widget
 TAB_LABEL = f"STOMPscan v{VERSION}"
@@ -502,6 +502,9 @@ class TabContent(QWidget):
                     self.ui.OutputTable.setItem(row_count, col, item)
 
                 self.ui.StatusTextBox.appendPlainText(f"Completed scan for {host}")
+                self.ui.OutputTable.scrollToBottom()
+                QApplication.processEvents() # Force UI update
+
             except Exception as e:
                 self.ui.StatusTextBox.appendPlainText(f"Error scanning {host}: {e}")
 
